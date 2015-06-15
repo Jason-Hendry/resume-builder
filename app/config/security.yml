@@ -1,0 +1,23 @@
+security:
+
+    providers:
+        in_memory:
+            memory: ~
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+
+#            resource_owners:
+#                google: "/login/google"
+#            login_path: /login
+#            failure_path: /login
+#            oauth_user_provider:
+#                service: ib_user.oauth_user_provider
+
+    access_control:
+            - { path: ^/resume, roles: ROLE_USER }
