@@ -79,11 +79,11 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-#hwi_oauth:
-#    firewall_name: main
-#    resource_owners:
-#        google:
-#            type:                google
-#            client_id:           891812615894-r6nkkd3sfg5i42eev28dvj34jlhg1mn9.apps.googleusercontent.com
-#            client_secret:       PihIlQSsMH1UXCFDZnAnnHup
-#            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        google:
+            type:                google
+            client_id:           891812615894-r6nkkd3sfg5i42eev28dvj34jlhg1mn9.apps.googleusercontent.com
+            client_secret:       PihIlQSsMH1UXCFDZnAnnHup
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
