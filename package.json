@@ -1,0 +1,12 @@
+{
+  "name": "resume-builder",
+  "version": "0.0.1",
+  "dependencies": {
+    "less": "latest"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jason-Hendry/resume-builder.git"
+  }
+}

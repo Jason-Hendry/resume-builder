@@ -15,7 +15,7 @@ use AppBundle\Form\EmploymentType;
  *
  * @Route("/employment")
  */
-class EmploymentController extends Controller
+class EmploymentController extends BaseController
 {
 
     /**

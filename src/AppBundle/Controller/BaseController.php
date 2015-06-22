@@ -6,9 +6,6 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-/**
- * Education controller.
- */
 class BaseController extends Controller
 {
     /**

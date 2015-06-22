@@ -15,26 +15,10 @@ use AppBundle\Form\ResumeType;
  *
  * @Route("/resume")
  */
-class ResumeController extends Controller
+class ResumeController extends BaseController
 {
 
-    /**
-     * Lists all Resume entities.
-     *
-     * @Route("/", name="resume")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Resume')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
     /**
      * Creates a new Resume entity.
      *

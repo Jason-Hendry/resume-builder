@@ -76,6 +76,6 @@ class OAuthProvider extends OAuthUserProvider
 
     public function supportsClass($class)
     {
-        return $class === 'Foggyline\\Bundle\\TickerBundle\\Entity\\User';
+        return $class === 'AppBundle\\Entity\\User';
     }
 }

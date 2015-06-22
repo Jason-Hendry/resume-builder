@@ -15,7 +15,7 @@ use AppBundle\Form\EducationType;
  *
  * @Route("/education")
  */
-class EducationController extends Controller
+class EducationController extends BaseController
 {
 
     /**

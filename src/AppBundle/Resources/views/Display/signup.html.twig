@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Signup</h1>
+
+    <div class="oauth">
+        <div class="google">
+            <a class="btn"
+               href="{{ path('hwi_oauth_service_redirect', {"service":'google'}) }}">
+                <span class="icon"></span>
+                <span class="buttonText">Google</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+

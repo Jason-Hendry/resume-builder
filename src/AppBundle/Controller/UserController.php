@@ -15,7 +15,7 @@ use AppBundle\Form\UserType;
  *
  * @Route("/user")
  */
-class UserController extends Controller
+class UserController extends BaseController
 {
 
     /**
