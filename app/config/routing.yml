@@ -1,8 +1,9 @@
-
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 hwi_oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /login
+    prefix:   /sso_login
 
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
@@ -11,9 +12,7 @@ hwi_oauth_redirect:
 google_login:
     pattern: /login/google
 
-logout:
-    path:   /logout
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+

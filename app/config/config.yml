@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -31,10 +31,14 @@ framework:
     fragments:       ~
     http_method_override: true
 
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources: ['bootstrap_3_horizontal_layout.html.twig']
+
 
 # Assetic Configuration
 assetic:
@@ -99,3 +103,8 @@ hwi_oauth:
             client_id:           891812615894-r6nkkd3sfg5i42eev28dvj34jlhg1mn9.apps.googleusercontent.com
             client_secret:       PihIlQSsMH1UXCFDZnAnnHup
             scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User

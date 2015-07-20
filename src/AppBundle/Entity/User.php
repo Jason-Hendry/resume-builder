@@ -2,8 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUser;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -11,8 +14,14 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUser;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
-class User extends OAuthUser
+class User extends BaseUser implements UserInterface
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->creationDate = new DateTime();
+    }
+
     /**
      * @var integer
      *
@@ -20,35 +29,35 @@ class User extends OAuthUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    private $name = "";
 
     /**
      * @var string
      *
      * @ORM\Column(name="google_id", type="string", length=255)
      */
-    private $googleId;
+    private $googleId = "";
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean")
      */
-    private $active;
+    private $active = true;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted = false;
 
     /**
      * @var \DateTime
@@ -56,7 +65,6 @@ class User extends OAuthUser
      * @ORM\Column(name="creation_date", type="datetime")
      */
     private $creationDate;
-
 
     /**
      * Get id
@@ -69,22 +77,7 @@ class User extends OAuthUser
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -92,22 +85,15 @@ class User extends OAuthUser
     }
 
     /**
-     * Set googleId
-     *
-     * @param string $googleId
-     * @return User
+     * @param string $name
      */
-    public function setGoogleId($googleId)
+    public function setName($name)
     {
-        $this->googleId = $googleId;
-
-        return $this;
+        $this->name = $name;
     }
 
     /**
-     * Get googleId
-     *
-     * @return string 
+     * @return string
      */
     public function getGoogleId()
     {
@@ -115,73 +101,74 @@ class User extends OAuthUser
     }
 
     /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return User
+     * @param string $googleId
      */
-    public function setActive($active)
+    public function setGoogleId($googleId)
     {
-        $this->active = $active;
-
-        return $this;
+        $this->googleId = $googleId;
     }
 
     /**
-     * Get active
-     *
-     * @return boolean 
+     * @return boolean
      */
-    public function getActive()
+    public function isActive()
     {
         return $this->active;
     }
 
     /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     * @return User
+     * @param boolean $active
      */
-    public function setDeleted($deleted)
+    public function setActive($active)
     {
-        $this->deleted = $deleted;
-
-        return $this;
+        $this->active = $active;
     }
 
     /**
-     * Get deleted
-     *
-     * @return boolean 
+     * @return boolean
      */
-    public function getDeleted()
+    public function isDeleted()
     {
         return $this->deleted;
     }
 
     /**
-     * Set creationDate
-     *
-     * @param \DateTime $creationDate
-     * @return User
+     * @param boolean $deleted
      */
-    public function setCreationDate($creationDate)
+    public function setDeleted($deleted)
     {
-        $this->creationDate = $creationDate;
-
-        return $this;
+        $this->deleted = $deleted;
     }
 
     /**
-     * Get creationDate
-     *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreationDate()
     {
         return $this->creationDate;
     }
 
+    /**
+     * @param \DateTime $creationDate
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
 
+
+
+    /**
+     * Tells if the the given user is this user.
+     *
+     * Useful when not hydrating all fields.
+     *
+     * @param null|\FOS\UserBundle\Model\UserInterface $user
+     *
+     * @return boolean
+     */
+    public function isUser(\FOS\UserBundle\Model\UserInterface $user = null)
+    {
+        return $user->getUsername() == $this->getUsername();
+    }
 }
